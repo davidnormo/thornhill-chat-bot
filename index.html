@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <style></style>
+  </head>
+  <body>
+    <input id="text" autofocus placeholder="Ask chat bot a question..." />
+    <div id="conversation"></div>
+<script>
+const getPokemon = async (name = "pikachu") => {
+    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+    const {
+      sprites: { front_default },
+    } = await res.json();
+    return {
+      picture: front_default,
+    };
+};
+
+const input = document.querySelector('#text');
+const convo = document.querySelector('#conversation');
+
+input.addEventListener('change', async (e) => {
+  const text = e.target.value;
+  alert(text); 
+});
+</script>
+  </body>
+</html>
